@@ -19,6 +19,6 @@ if __name__ == "__main__":
         elif 2 == inp:
             hotel.check_out()
         elif 3 == inp:
-            break
+            hotel.order_food()
         else:
             print("Wrong choices, Try Again !!")

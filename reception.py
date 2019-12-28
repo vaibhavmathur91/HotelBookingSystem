@@ -122,3 +122,35 @@ class Hotel:
         floor = room.get_floor()
         self.rooms_available[floor].append(room)
         self.room_types[floor] += 1
+
+    def order_food(self):
+        room_number = int(input("\nEnter room number for delivery : "))
+        room = self.get_booked_room(room_number)
+        if room:
+            menu_map = {
+                1: 20,
+                2: 35,
+                3: 45,
+                4: 55,
+                5: 65
+            }
+            flag = True
+            total = 0
+            while flag:
+                order = int(input("""
+                    Menu:
+                        1) Water (20 Rs)
+                        2) Juice (35 rs)
+                        3) Fruit Salad (45 Rs)
+                        4) Half Meal (55 Rs)
+                        5) Full Meal (65 Rs)
+                        6) quit
+                """))
+                if order != 6:
+                    quantity = int(input("\nEnter quantity"))
+                    total += menu_map.get(order, 0) * quantity
+                else:
+                    break
+            room.add_to_bill(total)
+        else:
+            print("Invalid Room number !!")
